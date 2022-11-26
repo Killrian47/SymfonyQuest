@@ -2,6 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Episode;
+use App\Entity\Program;
+use App\Entity\Season;
 use App\Repository\EpisodeRepository;
 use App\Repository\ProgramRepository;
 use App\Repository\SeasonRepository;
@@ -24,18 +27,10 @@ class ProgramController extends AbstractController
     }
 
     #[Route('/{id<^[0-9]+$>}', name: 'by_id', methods: ['GET'])]
-    public function show(int $id, ProgramRepository $programRepository, SeasonRepository $seasonRepository): Response
+    public function show(int $id, Program $program, SeasonRepository $seasonRepository): Response
     {
-        $program = $programRepository->findOneBy(['id' => $id]);
-        //$program = $programRepository->find($id);
-        $seasons = $seasonRepository->findAll();
 
-        if (!$program) {
-            throw $this->createNotFoundException(
-                'No program with id : '.$id.' found in program\'s table.'
-            );
-        }
-
+        $seasons = $seasonRepository->findBy(['program' => $id]);
 
         return $this->render('Program/show.html.twig', [
             'id' => $id,
@@ -47,10 +42,10 @@ class ProgramController extends AbstractController
     #[Route('/{program_id}/seasons/{season_id<\d+>}', name: 'season_show')]
     #[Entity('program', options: ['id' => 'program_id'])]
     #[Entity('season', options: ['id' => 'season_id'])]
-    public function showSeason(int $program_id, int $season_id, ProgramRepository $programRepository, SeasonRepository $seasonRepository, EpisodeRepository $episodeRepository): Response
+    public function showSeason(int $program_id, int $season_id, Program $program, Season $season, EpisodeRepository $episodeRepository): Response
     {
-        $program = $programRepository->findOneBy(['id' => $program_id]);
-        $season = $seasonRepository->find(['id' => $season_id]);
+//        $program = $programRepository->findOneBy(['id' => $program_id]);
+//        $season = $seasonRepository->findBy(['id' => $season_id]);
         $episodes = $episodeRepository->findBy(['season' => $season_id]);
 
 
@@ -58,6 +53,19 @@ class ProgramController extends AbstractController
             'season' => $season,
             'episodes' => $episodes,
             'program' => $program
+        ]);
+    }
+
+    #[Route('/{program_id<\d+>}/seasons/{season_id<\d+>}/episode/{episode_id<\d+>}', name: 'episode_show')]
+    #[Entity('program', options: ['id' => 'program_id'])]
+    #[Entity('season', options: ['id' => 'season_id'])]
+    #[Entity('episode', options: ['id' => 'episode_id'])]
+    public function showEpisode(Program $program, Season $season, Episode $episode)
+    {
+        return $this->render('Program/show_episode.html.twig', [
+            'program' => $program,
+            'season' => $season,
+            'episode' => $episode
         ]);
     }
 }

@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <div class="media">
+        <h1>{{ program.title }}</h1>
+        <h2>Saison {{ season.number }}</h2>
+
+        <h3>{{ episode.number }} : {{ episode.title }}</h3>
+        <p>{{ episode.synopsis }}</p>
+
+        <a href="{{ path("program_by_id", { id: program.id }) }}">Back</a>
+    </div>
+{% endblock %}
