@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}All categories{% endblock %}
+
+{% block content %}
+    <h1>Toutes les categories de la table catégorie : </h1>
+    {% for category in categories %}
+        <div>
+            <a href="/category/{{ category.name }}">
+                <h2>{{ loop.index }} / {{ category.name }}</h2>
+            </a>
+        </div>
+    {% else %}
+        Aucune catégorie trouvée.
+    {% endfor %}
+{% endblock %}
