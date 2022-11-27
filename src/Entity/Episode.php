@@ -15,7 +15,7 @@ class Episode
     private ?int $id = null;
 
     #[ORM\ManyToOne(inversedBy: 'episodes')]
-    private ?season $season = null;
+    private ?Season $season = null;
 
     #[ORM\Column(length: 255)]
     private ?string $title = null;
@@ -31,12 +31,12 @@ class Episode
         return $this->id;
     }
 
-    public function getSeason(): ?season
+    public function getSeason(): ?Season
     {
         return $this->season;
     }
 
-    public function setSeason(?season $season): self
+    public function setSeason(?Season $season): self
     {
         $this->season = $season;
 

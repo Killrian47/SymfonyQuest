@@ -40,7 +40,7 @@ class EpisodeRepository extends ServiceEntityRepository
     }
 
 //    /**
-//     * @return Episode[] Returns an array of Episode objects
+//     * @return episode[] Returns an array of episode objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -54,7 +54,7 @@ class EpisodeRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?Episode
+//    public function findOneBySomeField($value): ?episode
 //    {
 //        return $this->createQueryBuilder('e')
 //            ->andWhere('e.exampleField = :val')

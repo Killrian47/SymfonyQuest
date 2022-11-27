@@ -24,13 +24,13 @@ class ProgramController extends AbstractController
     {
         $programs = $programRepository->findAll();
 
-        return $this->render('Program/index.html.twig', [
+        return $this->render('program/index.html.twig', [
             'programs' => $programs,
         ]);
     }
 
     #[Route('/new', name: 'new')]
-    public function newProgram(Request $request, CategoryRepository $categoryRepository, ProgramRepository $programRepository): Response
+    public function newProgram(Request $request, ProgramRepository $programRepository): Response
     {
         $program = new Program();
 
@@ -60,7 +60,7 @@ class ProgramController extends AbstractController
 
         $seasons = $seasonRepository->findBy(['program' => $id]);
 
-        return $this->render('Program/show.html.twig', [
+        return $this->render('program/show.html.twig', [
             'id' => $id,
             'program' => $program,
             'seasons' => $seasons
@@ -77,7 +77,7 @@ class ProgramController extends AbstractController
         $episodes = $episodeRepository->findBy(['season' => $season_id]);
 
 
-        return $this->render('Program/season-show.html.twig', [
+        return $this->render('program/season-show.html.twig', [
             'season' => $season,
             'episodes' => $episodes,
             'program' => $program
@@ -90,7 +90,7 @@ class ProgramController extends AbstractController
     #[Entity('episode', options: ['id' => 'episode_id'])]
     public function showEpisode(Program $program, Season $season, Episode $episode)
     {
-        return $this->render('Program/show_episode.html.twig', [
+        return $this->render('program/show_episode.html.twig', [
             'program' => $program,
             'season' => $season,
             'episode' => $episode
