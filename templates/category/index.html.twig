@@ -1,16 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}All categories{% endblock %}
+{% block title %}Categories | {{ parent() }}{% endblock %}
 
 {% block content %}
-    <h1>Toutes les categories de la table catégorie : </h1>
-    {% for category in categories %}
-        <div>
-            <a href="/category/{{ category.name }}">
-                <h2>{{ loop.index }} / {{ category.name }}</h2>
-            </a>
+    <div class="ws-main-category-container">
+        <a href="{{ path('category_new') }}" class="m-3">{{ 'category.new' | trans }}</a>
+        <h2 class="text-center mb-3">{{ 'category.title' | trans }}: </h2>
+        <div class="ws-category-container">
+            {% for category in categories %}
+                <div class="ws-category-card " id="ws-category-card-{{ loop.index }}">
+                    <a href="{{ path('category_show', {categoryName : category.name}) }}"><h4>{{ category.name }}</h4></a>
+                </div>
+            {% endfor %}
         </div>
-    {% else %}
-        Aucune catégorie trouvée.
-    {% endfor %}
+    </div>
 {% endblock %}

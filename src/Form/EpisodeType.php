@@ -17,10 +17,11 @@ class EpisodeType extends AbstractType
             ->add('synopsis')
             ->add('season', null, [
                 'attr' => [
-                    'placeholder' => 'Choisir un programme'
+                    'placeholder' => 'Choisir une saison'
                 ],
                 'choice_label' => 'number'
             ])
+            ->add('duration')
         ;
     }
 

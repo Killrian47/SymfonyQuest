@@ -1,23 +1,42 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}
-    All programs
+{{ 'welcome' | trans }}
 {% endblock %}
 
 {% block content %}
-    <h1>Toutes les séries de la table program : </h1>
-    {% for program in programs %}
-        <div>
-            <h2>{{ loop.index }} / {{ program.title }} - Catégorie : {{ program.category.name }}</h2>
-            <p>{{ program.synopsis }}</p>
-            {# Lien vers la fiche de la série : #}
-            <a href="{{ path("program_by_id", { id: program.id }) }}">Voir la fiche</a>
-        </div>
-    {% else %}
-        Aucune série trouvée.
-    {% endfor %}
 
-    <a href="{{ path('program_index') }}">
-        Retour à l'accueil
-    </a>
+    <div class="w-100">
+        <p class="m-3"><a href="{{ path('program_new') }}" class="">{{ 'program.new' | trans }}</a></p>
+        {{ include('_include/searchProgramForm.html.twig') }}
+        <h3 class="text-center mb-3">{{ 'program.title' | trans }} :</h3>
+        <table class="table ws-program-table">
+            <thead>
+            <tr>
+                <th scope="col" class="ws-th ws-program-table-content">#</th>
+                <th scope="col" class="ws-th ws-program-table-content">{{ 'program.name' | trans }}</th>
+                <th scope="col" class="ws-th ws-program-table-content">{{ 'navbar.category' | trans}}</th>
+                <th scope="col" class="ws-th ws-program-table-content">{{ 'program.synopsis' | trans }}</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            {% for program in programs %}
+            <tr>
+                <th scope="row" class="ws-program-table-content border-right"><a
+                            href="{{ path("program_by_id", { slug: program.slug }) }}"
+                            class="text-dark">{{ loop.index }}</a></th>
+                <td class="ws-program-table-content border-right"><a
+                            href="{{ path("program_by_id", { slug: program.slug }) }}"
+                            class="text-dark">{{ program.title }}</a></td>
+                <td class="ws-program-table-content border-right">{{ program.category.name }}</td>
+                <td class="ws-program-table-content">{{ program.synopsis }}</td>
+            </tr>
+            {% else %}
+            </tbody>
+            Aucune catégorie trouvée.
+            {% endfor %}
+        </table>
+    </div>
+
 {% endblock %}

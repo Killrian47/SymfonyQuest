@@ -3,7 +3,30 @@
 {% block title %}Série par catégorie{% endblock %}
 
 {% block content %}
-    <div class="media">
-        {{ dump(programs) }}
+    <div class="ws-main-program-by-category-container ">
+
+        <h3 class="text-center mt-3">Tout les programmes par rapport au thème {{ categories.name }} : </h3>
+        <br>
+        {% if programs %}
+            <table class="table ws-program-by-category-table">
+                <thead>
+                <tr>
+                    <th scope="col" class="ws-loop-index ws-th">#</th>
+                    <th scope="col" class="ws-th">Program's name</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for program in programs %}
+                    <tr>
+                        <th scope="row" class="ws-loop-index">{{ loop.index }}</th>
+                        <td><a href="{{ path("program_by_id", { slug: program.slug }) }}"
+                               class="text-dark">{{ program.title }}</a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <h4 class="text-danger text-center mt-5">Pas de séries pour ce thème </h4>
+        {% endif %}
     </div>
 {% endblock %}

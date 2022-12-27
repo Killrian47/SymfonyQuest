@@ -35,7 +35,7 @@ class CategoryController extends AbstractController
         // Get data from HTTP request
         $form->handleRequest($request);
         // Was the form submitted ?
-        if ($form->isSubmitted()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             $categoryRepository->save($category, true);
             return $this->redirectToRoute('category_index');
             // Deal with the submitted data
@@ -58,17 +58,16 @@ class CategoryController extends AbstractController
     #[Route('/{categoryName}', name: 'show')]
     public function show(string $categoryName, CategoryRepository $categoryRepository, ProgramRepository $programRepository): Response
     {
-        $getCategory = $categoryRepository->findBy(['name' => $categoryName]);
-        //var_dump($getCategory);
-        //die();
+        $getCategory = $categoryRepository->findOneBy(['name' => $categoryName]);
+        $programs = $programRepository->findBy(['category' => $getCategory]);
 
         if (!$getCategory) {
             throw $this->createNotFoundException('Aucune catégorie nommée ' . $categoryName );
         }
 
-
         return $this->render('category/show.html.twig', [
-            'programs' => $getCategory
+            'categories' => $getCategory,
+            'programs' => $programs
         ]);
     }
 

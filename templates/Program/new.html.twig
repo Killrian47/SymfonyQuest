@@ -1,8 +1,8 @@
 {% extends "base.html.twig" %}
 
 {% block content %}
-    {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button type="submit">Add program</button>
-    {{ form_end(form) }}
+    <div class="w-75 mx-auto my-3 ">
+        <h2>Ajouter un nouveau programme</h2>
+        {{ form(form) }}
+    </div>
 {% endblock %}
