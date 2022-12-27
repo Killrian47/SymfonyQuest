@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    {% for pro in program %}
+        <p class="m-3"><a href="{{ path("program_by_id", { slug: pro.slug }) }}">Retourner page détails du programme</a>
+        </p>
+        <div class="bg-light w-75 mx-auto pt-3 rounded-3 ws-season-container">
+            <h1 class="text-center my-3 mt-1">{{ pro.title }}</h1>
+            {% for saison in season %}
+                <h3 class="ms-3">{{ 'season.season' | trans }} {{ saison.number }}</h3>
+                {% for episode in episodes %}
+                    <details class="ms-5">
+                        <summary class="h5">{{ 'season.episode' | trans }} {{ episode.number }} : {{ episode.title }}</summary>
+                        <p>{{ episode.synopsis }}</p>
+                        <a href="{{ path("program_episode_show", {slug: pro.slug, season_id: saison.id, episode_id: episode.id }) }}">Voir
+                            plus de détails</a>
+                    </details>
+                {% endfor %}
+            {% endfor %}
+        </div>
+    {% endfor %}
+{% endblock %}

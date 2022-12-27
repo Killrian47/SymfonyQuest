@@ -1,0 +1,7 @@
+{% extends '/Email/layoutEmail.html.twig' %}
+
+{% block email_content %}
+    <h1>L'épisode numéro {{ episode.number }} a bien été créé</h1>
+    <h3>Hé bonjour, l'épisode {{ episode.number }} a bien été ajouté au Wild Series</h3>
+    <p>Synopsis : {{ episode.synopsis }}</p>
+{% endblock %}

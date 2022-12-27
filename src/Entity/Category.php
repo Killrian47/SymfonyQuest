@@ -3,7 +3,9 @@
 namespace App\Entity;
 
 use App\Repository\CategoryRepository;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: CategoryRepository::class)]
 class Category
@@ -14,7 +16,17 @@ class Category
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: 'Veuillez entrer un nom de catégorie')]
+    #[Assert\Length(max: 255)]
     private ?string $name = null;
+
+    #[ORM\OneToMany(mappedBy: 'category', targetEntity: Program::class)]
+    private $programs;
+
+    public function __construct()
+    {
+        $this->programs = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -29,6 +41,36 @@ class Category
     public function setName(string $name): self
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getPrograms(): ArrayCollection
+    {
+        return $this->programs;
+    }
+
+    public function addProgram(Program $program): self
+    {
+        if (!$this->programs->contains($program)) {
+            $this->programs[] = $program;
+            $program->setCategory($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProgram(Program $program): self
+    {
+        if ($this->programs->removeElement($program)) {
+            // set the owning side to null (unless already changed)
+            if ($program->getCategory() === $this) {
+                $program->setCategory(null);
+            }
+        }
 
         return $this;
     }

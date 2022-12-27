@@ -1,13 +1,51 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Program {{ id }}</h1>
-</body>
-</html>
+{% extends 'base.html.twig' %}
+
+{% block title %}Série #{{ program.id }}{% endblock %}
+
+{% block content %}
+
+    <p class="m-3"><a href="{{ path('program_index') }}">{{ 'program.back' | trans }}</a></p>
+    <div class="w-50 ws-program-by-id-main-container d-flex m-auto justify-around">
+        <div class="w-50 ">
+            <img class="rounded-3" src="{{ vich_uploader_asset(program) }}" alt="{{ program.title }}">
+        </div>
+        <div class="ws-program-by-id-container w-50 bg-light rounded-3">
+            <div class="ws-description-program-by-id-container">
+                <h1 class="text-center">{{ program.title }}</h1>
+                {% if app.user %}
+                    <a href="{{ path('program_watchlist', {id : program.id}) }}" id="watchlist" class="ms-3">
+                        <i class="bi {{ app.user.inWatchList(program) ? 'bi-heart-fill' : 'bi-heart' }}"></i>
+                    </a>
+                {% endif %}
+                <h3 class="text-center">Catégorie : {{ program.category.name }}</h3>
+                <details class="ms-3">
+                    <summary>Synopsis</summary>
+                    <p class="text-dark">{{ program.synopsis }}</p>
+                </details>
+            </div>
+            <div class="ms-3">
+                <strong>{{ 'program.actors' | trans }} :</strong>
+                <ul class="ws-actors-list">
+                    {% for actor in program.actors %}
+                        <li>{{ actor.name }}</li>
+                    {% else %}
+                        <li>Aucun acteur pour cette série</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div>
+                <a class="nav-link text-dark dropdown-toggle ms-3" href="#" role="button" data-bs-toggle="dropdown"
+                   aria-expanded="false">
+                    {{ 'program.seasons' | trans }}
+                </a>
+                <ul class="dropdown-menu">
+                    {% for season in seasons %}
+                        <a class="dropdown-item border-bottom"
+                           href="{{ path('program_season_show', {slug: program.slug ,season_id: season.id}) }}">{{ 'program.season' | trans }} {{ season.number }}</a>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <div class="m-5">
+        <h1>User : {{ comment.user.email }}</h1>
+        <h2>Contenu : {{ comment.comment }}</h2>
+        {{ comment.id }}
+    </div>
+    <form method="post" action="{{ path('app_comment_delete', {id: comment.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ comment.id) }}">
+        <button class="btn btn-danger ms-5">Delete</button>
+    </form>
+{% endblock %}
+
+
+

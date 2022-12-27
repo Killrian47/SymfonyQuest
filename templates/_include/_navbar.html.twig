@@ -1,0 +1,48 @@
+<nav class="navbar navbar-expand-lg bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand text-light" href="/en">Wild Series</a>
+        <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active d-none d-md-block text-light" aria-current="page"
+                       href="/en">{{ 'navbar.home' | trans }}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-light"
+                       href="{{ path('program_index') }}">{{ 'navbar.programs' | trans }}</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link text-light dropdown-toggle ms-3" href="#" role="button" data-bs-toggle="dropdown"
+                       aria-expanded="false">
+                        {{ 'navbar.category' | trans }}
+                    </a>
+                    <ul class="dropdown-menu nav-item">
+                        {{ render(controller('App\\Controller\\DefaultController::navbarTop')) }}
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class="text-light">
+            {% if app.user %}
+                <a href="{{ path('app_account') }}">
+                    {% trans with {'%username%' : app.user.email} %}
+                        hello_username
+                    {% endtrans %} !</a>
+                <a href="{{ path('app_logout') }}"
+                   class="mx-auto nav-link text-light">{{ 'account.logout' | trans }}</a>
+            {% else %}
+                <div class="d-flex">
+                    <a href="{{ path('app_register') }}"
+                       class="mx-auto nav-link text-light me-3">{{ 'account.register' | trans }}</a>
+                    <a href="{{ path('app_login') }}"
+                       class="mx-auto nav-link text-light">{{ 'account.sign_in' | trans }}</a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</nav>

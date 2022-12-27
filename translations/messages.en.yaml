@@ -1,0 +1,46 @@
+welcome: Welcome
+change:
+  select: Change the language
+  language: French
+  lang: /fr
+account:
+  sign_in: Sign in
+  register: Create account
+  logout: Logout
+navbar:
+  home: Home
+  category: Category
+  programs: Programs
+hello_username: Hi %username%
+content-carousel:
+  category:
+    h1: Many categories incredible
+    p: On Wild Series you can find many different categories
+    link: See all categories
+  programs:
+    h1: Many amazing programs
+    p: On Wild Series you can find many series with their season
+    link: See all programs
+home-page:
+  program-title: Program title
+  program-category: Category
+  program-synopsis: Program synopsis
+  program-poster: Program poster
+program:
+  new: Add a new program
+  title: All programs on the table program
+  name : Name
+  synopsis: Synopsis
+  back: Return to the list of programs
+  actors: Actors in this program
+  seasons: Seasons
+  season: Season
+category:
+  new: Add a new category
+  title: All categories on Wild Series
+season:
+  season: Season
+  episode: Episode
+comments: Comments' space
+back: Go back
+

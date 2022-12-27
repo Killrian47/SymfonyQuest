@@ -1,0 +1,175 @@
+body {
+  background-color: darken(white, 30%);
+}
+.carousel, .carousel-item {
+  //margin-top:   50px;
+  height: 250px;
+}
+
+/* Home page */
+.ws-container-description-category-program {
+  justify-content: space-around;
+  .ws-container-description-category {
+    width: 40%;
+    border-radius: 20px;
+    h3 {
+      color: blue;
+    }
+  }
+  .ws-container-description-program {
+    width: 40%;
+  }
+}
+
+/* End Home page */
+
+/* Submit */
+.ws-input {
+  border: 2px solid black;
+}
+.ws-btn-submit {
+  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+}
+/* End Submit */
+
+/* Category Home page */
+.ws-category-container {
+  width: 100%;
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr auto;
+  text-align: center;
+  gap: 36px;
+  padding: 24px;
+
+  .ws-category-card {
+    height: 150px;
+    width: 100%;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    //border: 2px solid currentColor;
+    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+
+    a {
+      color: black;
+    }
+  }
+
+  #ws-category-card-1 {
+    grid-column-start: 2;
+
+  }
+
+  #ws-category-card-2 {
+    grid-column-start: 3;
+
+  }
+
+  #ws-category-card-3 {
+    grid-column-start: 2;
+    grid-row-start: 2;
+  }
+
+  #ws-category-card-4 {
+    grid-column-start: 3;
+    grid-row-start: 2;
+  }
+
+  #ws-category-card-5 {
+    grid-column-start: 2;
+    grid-row-start: 3;
+  }
+
+  #ws-category-card-6 {
+    grid-column-start: 3;
+    grid-row-start: 3;
+  }
+
+  #ws-category-card-7 {
+    grid-column-start: 2;
+    grid-row-start: 4;
+  }
+
+  #ws-category-card-8 {
+    grid-column-start: 3;
+    grid-row-start: 4;
+  }
+}
+
+/* End Category Home page */
+
+/* Programs by Category Name */
+.ws-program-by-category-table {
+  width: 40%;
+  margin: auto;
+  border-radius: 20px;
+  background: white;
+  box-shadow: rgba(0, 0, 0, 0.56) 0 22px 70px 4px;
+
+  .ws-th {
+    border-top: 0;
+  }
+
+  .ws-loop-index {
+    text-align: center;
+    border-right: 2px solid currentColor;
+  }
+}
+
+/* End Programs by Category Name */
+
+/* Programs Home page*/
+.ws-program-table {
+  width: 50%;
+  margin: auto;
+  border-radius: 20px;
+  background: white;
+  box-shadow: rgba(0, 0, 0, 0.56) 0 22px 70px 4px;
+
+  .ws-th {
+    border-top: 0;
+  }
+
+  .ws-program-table-content {
+    text-align: center;
+  }
+}
+
+/* End Programs Home page*/
+
+/* One Program */
+.ws-program-by-id-container {
+  height: 400px;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+
+  .ws-image-program-container {
+    .ws-image {
+      border-radius: 20px;
+    }
+  }
+  .ws-description-program-by-id-container {
+    p {
+      margin-left: 20px;
+    }
+
+  }
+}
+.ws-actors-list {
+  list-style: none;
+}
+.ws-actors-list li {
+  padding: 5px;
+}
+/* End One Program */
+
+/* Show season */
+.ws-season-container {
+  box-shadow: rgba(0, 0, 0, 0.56) 0 22px 70px 4px;
+
+}
+/* End Show season */

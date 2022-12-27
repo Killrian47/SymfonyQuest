@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <div class="ms-3">
+        <strong>Acteur :</strong>
+    </div>
+    <ul class="ms-5">
+        {% if actors %}
+            <li>{{ actors.name }}</li>
+        {% else %}
+            <li>Aucun acteur pour cette série</li>
+        {% endif %}
+    </ul>
+{% endblock %}

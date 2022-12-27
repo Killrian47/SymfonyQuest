@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    <h1 class="mx-3 text-dark">Mon compte</h1>
+    <p class="mx-5">Bienvenue <strong class="text-primary">{{ user.email }}</strong> dans votre espace membre.</p>
+    <br>
+    <a href="{{ path('app_reset_password', { token: csrf_token('authenticate')}) }}"><i>Forgot password ?</i></a>
+    <br>
+    {% for programs in app.user.watchlist %}
+        {{ programs.title }}
+    {% endfor %}
+{% endblock %}

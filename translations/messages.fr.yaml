@@ -1,0 +1,44 @@
+welcome: Bienvenue
+change:
+  select: Changer de langue
+  language: English
+  lang: /en
+account.sign_in: 'Se connecter'
+account.register: 'Créer un compte'
+account.logout: 'Se déconnecter'
+hello_username: Salut %username%
+navbar:
+  home: Accueil
+  category: Categories
+  programs: Programmes
+content-carousel:
+  category:
+    h1: Des catégories rocambolesques
+    p: Sur Wild Series vous trouverez plein de catégories différentes
+    link: Voir toutes les categories
+  programs:
+    h1: Des programmes incroyable
+    p: Sur Wild Series vous trouverez des séries ainsi que leur saisons associées
+    link: Voir tout les programmes
+home-page:
+  program-title: Titre du programme
+  program-category: Catégorie
+  program-synopsis: Synopsis du programme
+  program-poster: Poster du programme
+program:
+  new: Ajouter un nouveau programme
+  title: Toutes les séries dans la table programme
+  name: Nom
+  synopsis: Synopsis
+  back: Retour à la liste des programmes
+  actors: Acteurs dans ce programme
+  seasons: Saisons
+  season: Saison
+category:
+  new: Ajouter une nouvelle catégorie
+  title: Toutes les catégories présentent sur Wild Series
+season:
+  season: Saison
+  episode: Épisode
+comments: Espace commentaires
+back: Retourner en arrière
